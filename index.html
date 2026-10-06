@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Entrada Segura | Protección para tu futuro</title>
+  <meta name="description" content="Landing page moderna y profesional de una empresa de seguros." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0a3d62;
+      --primary-dark: #072d48;
+      --secondary: #1f9d8d;
+      --accent: #f6b93b;
+      --bg: #f4f7fb;
+      --card: #ffffff;
+      --text: #132238;
+      --muted: #5d6a7a;
+      --shadow: 0 20px 50px rgba(12, 40, 70, 0.1);
+      --radius: 20px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    button, input, textarea { font: inherit; }
+
+    .container {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      border-radius: 999px;
+      padding: 15px 26px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.25s ease;
+      white-space: nowrap;
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #fff;
+      box-shadow: 0 18px 35px rgba(10, 61, 98, 0.25);
+    }
+
+    .btn.primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 40px rgba(10, 61, 98, 0.3);
+    }
+
+    .btn.secondary {
+      background: #fff;
+      color: var(--primary);
+      border: 1px solid rgba(10, 61, 98, 0.12);
+    }
+
+    .btn.secondary:hover {
+      background: #f5f9ff;
+    }
+
+    .section { padding: 100px 0; }
+
+    .section-header {
+      max-width: 700px;
+      margin: 0 auto 42px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      color: var(--secondary);
+      font-weight: 700;
+      font-size: 0.83rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    h1, h2, h3, h4 { margin: 0; line-height: 1.15; }
+    h2 {
+      font-size: clamp(2rem, 3vw, 3rem);
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    p { margin: 0; color: var(--muted); }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(244, 247, 251, 0.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(19, 34, 56, 0.06);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 82px;
+      gap: 24px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--primary);
+      letter-spacing: 0.02em;
+    }
+
+    .logo-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      color: #fff;
+      box-shadow: 0 12px 26px rgba(16, 83, 116, 0.25);
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .nav-menu a {
+      position: relative;
+      color: var(--text);
+      opacity: 0.8;
+    }
+
+    .nav-menu a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      width: 100%;
+      height: 2px;
+      background: var(--secondary);
+      border-radius: 1px;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: 0.25s ease;
+    }
+
+    .nav-menu a:hover::after {
+      transform: scaleX(1);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(19, 34, 56, 0.08);
+      border-radius: 12px;
+      background: #fff;
+      cursor: pointer;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at top left, rgba(31, 157, 141, 0.18), transparent 35%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0));
+      padding: 72px 0 60px;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      gap: 50px;
+    }
+
+    .hero-copy h1 {
+      font-size: clamp(2.7rem, 5vw, 5rem);
+      line-height: 1.08;
+      letter-spacing: -0.05em;
+      margin-bottom: 20px;
+      color: var(--primary-dark);
+    }
+
+    .hero-copy p {
+      font-size: 1.12rem;
+      max-width: 620px;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+
+    .mini-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .mini-box {
+      min-width: 130px;
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(19, 34, 56, 0.06);
+      border-radius: 14px;
+      padding: 16px 18px;
+      box-shadow: 0 12px 28px rgba(10, 40, 70, 0.04);
+    }
+
+    .mini-box strong {
+      display: block;
+      font-size: 1.5rem;
+      color: var(--primary-dark);
+    }
+
+    .mini-box span {
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .hero-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 530px;
+    }
+
+    .visual-card {
+      position: relative;
+      width: min(520px, 100%);
+      background: linear-gradient(180deg, #ffffff, #eef7fa);
+      border: 1px solid rgba(19, 34, 56, 0.08);
+      border-radius: 36px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      padding: 18px;
+    }
+
+    .visual-main {
+      position: relative;
+      width: 100%;
+      height: 540px;
+      border-radius: 28px;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(10, 61, 98, 0.6), rgba(31, 157, 141, 0.5)),
+        url('https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+      display: flex;
+      align-items: flex-end;
+      padding: 22px;
+    }
+
+    .floating-card {
+      position: absolute;
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 30px 60px rgba(10, 60, 90, 0.2);
+      padding: 18px 20px;
+      border: 1px solid rgba(19, 34, 56, 0.06);
+    }
+
+    .floating-card.one {
+      top: 30px;
+      right: 24px;
+      width: 180px;
+    }
+
+    .floating-card.two {
+      left: 18px;
+      bottom: 26px;
+      width: 200px;
+    }
+
+    .floating-card strong {
+      display: block;
+      color: var(--primary-dark);
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+    }
+
+    .floating-card span { color: var(--muted); font-size: 0.85rem; }
+
+    .check-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 18px;
+      padding: 0;
+      list-style: none;
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .check-list li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .check {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--secondary), #64d9ca);
+      color: white;
+      display: grid;
+      place-items: center;
+      font-size: 0.8rem;
+      font-weight: 900;
+    }
+
+    .services-grid, .features-grid, .steps-grid, .review-grid, .contact-grid {
+      display: grid;
+      gap: 26px;
+    }
+
+    .services-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+    .feature-card, .service-card, .step-card, .review-card, .contact-card {
+      background: var(--card);
+      border: 1px solid rgba(19, 34, 56, 0.06);
+      border-radius: var(--radius);
+      box-shadow: 0 16px 36px rgba(17, 53, 81, 0.05);
+    }
+
+    .service-card { padding: 30px 24px; }
+
+    .service-icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(10, 61, 98, 0.12), rgba(31, 157, 141, 0.14));
+      color: var(--primary-dark);
+      font-size: 1.6rem;
+      margin-bottom: 18px;
+    }
+
+    .service-card h3 { font-size: 1.35rem; margin-bottom: 10px; }
+    .service-card p { margin-bottom: 18px; }
+    .service-card a { font-weight: 700; color: var(--primary); }
+
+    .features-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+    .feature-card {
+      padding: 26px 22px;
+      text-align: left;
+    }
+
+    .feature-card .icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      margin-bottom: 16px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(10, 61, 98, 0.1), rgba(31, 157, 141, 0.14));
+      color: var(--primary);
+      font-size: 1.5rem;
+      font-weight: 900;
+    }
+
+    .feature-card h3 { font-size: 1.1rem; margin-bottom: 10px; }
+
+    .stats-band {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      color: #fff;
+      border-radius: 32px;
+      padding: 36px 30px;
+      margin: 0 auto;
+      box-shadow: 0 26px 60px rgba(10, 61, 98, 0.18);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 20px;
+      text-align: center;
+    }
+
+    .stats-grid strong {
+      display: block;
+      font-size: clamp(2rem, 3vw, 3rem);
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .stats-grid span { color: rgba(255, 255, 255, 0.8); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 42px;
+    }
+
+    .about-image {
+      position: relative;
+      min-height: 500px;
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background:
+        linear-gradient(135deg, rgba(10, 61, 98, 0.55), rgba(10, 61, 98, 0.15)),
+        url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+    }
+
+    .about-badge {
+      position: absolute;
+      right: 22px;
+      bottom: 22px;
+      background: #fff;
+      border-radius: 18px;
+      padding: 18px 20px;
+      box-shadow: 0 25px 50px rgba(10, 61, 98, 0.18);
+      border: 1px solid rgba(19, 34, 56, 0.06);
+    }
+
+    .about-badge strong {
+      display: block;
+      color: var(--primary-dark);
+      font-size: 1.7rem;
+    }
+
+    .about-badge span { color: var(--muted); font-size: 0.86rem; }
+
+    .about-copy ul {
+      list-style: none;
+      padding: 0;
+      margin: 28px 0 0;
+      display: grid;
+      gap: 18px;
+    }
+
+    .about-copy li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .about-copy li .check { flex-shrink: 0; margin-top: 2px; }
+
+    .steps-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+    .step-card { position: relative; padding: 28px 22px; }
+
+    .step-number {
+      width: 54px;
+      height: 54px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(10, 61, 98, 0.12), rgba(31, 157, 141, 0.16));
+      color: var(--primary-dark);
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+
+    .step-card h3 { margin-bottom: 10px; font-size: 1.3rem; }
+
+    .review-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .review-card { padding: 24px 22px; }
+
+    .stars {
+      color: var(--accent);
+      font-size: 1.1rem;
+      margin-bottom: 12px;
+      letter-spacing: 3px;
+    }
+
+    .review-person {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+    }
+
+    .review-person strong { display: block; color: var(--primary-dark); }
+
+    .contact-grid {
+      grid-template-columns: 0.9fr 1.1fr;
+      align-items: stretch;
+    }
+
+    .contact-card { padding: 28px 24px; }
+
+    .contact-info {
+      display: grid;
+      gap: 16px;
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      color: #fff;
+      border: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-info::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(255, 255, 255, 0.12), transparent 30%);
+    }
+
+    .contact-info > * { position: relative; z-index: 1; }
+
+    .contact-info h3 {
+      color: #fff;
+      font-size: 2rem;
+      margin-bottom: 8px;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .info-item .icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.14);
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+    }
+
+    .contact-form { display: grid; gap: 16px; }
+
+    .field { display: grid; gap: 8px; }
+    .field label { font-weight: 700; color: var(--text); }
+
+    .field input, .field textarea {
+      width: 100%;
+      border: 1px solid rgba(19, 34, 56, 0.12);
+      border-radius: 14px;
+      padding: 14px 16px;
+      background: #fbfdff;
+      color: var(--text);
+      resize: vertical;
+      outline: none;
+      transition: border 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .field input:focus, .field textarea:focus {
+      border-color: rgba(31, 157, 141, 0.7);
+      box-shadow: 0 0 0 4px rgba(31, 157, 141, 0.12);
+    }
+
+    footer {
+      background: #0b1f2d;
+      color: #dfeaf7;
+      padding: 30px 0 18px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      color: rgba(223, 234, 247, 0.8);
+    }
+
+    @media (max-width: 1024px) {
+      .hero-inner, .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .features-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .steps-grid, .review-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 760px) {
+      .nav-menu {
+        position: absolute;
+        left: 16px;
+        right: 16px;
+        top: 82px;
+        background: #fff;
+        border: 1px solid rgba(19, 34, 56, 0.06);
+        border-radius: 18px;
+        box-shadow: var(--shadow);
+        display: none;
+        flex-direction: column;
+        padding: 18px 20px;
+        align-items: flex-start;
+      }
+
+      .nav-menu.open { display: flex; }
+      .nav-toggle { display: grid; place-items: center; font-size: 1.4rem; }
+      .nav-actions .btn { display: none; }
+      .services-grid, .features-grid, .steps-grid, .review-grid, .stats-grid { grid-template-columns: 1fr; }
+      .hero { padding-top: 42px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="#inicio" class="logo" aria-label="Inicio">
+        <span class="logo-mark">E</span>
+        <span>Entrada Segura</span>
+      </a>
+
+      <nav class="nav-menu" id="menu">
+        <a href="#inicio">Inicio</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#proceso">Proceso</a>
+        <a href="#opiniones">Opiniones</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="#contacto" class="btn secondary">Cotiza ahora</a>
+        <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <div class="eyebrow">Protección inteligente</div>
+          <h1>Tu tranquilidad empieza con una decisión segura.</h1>
+          <p>
+            En Entrada Segura ayudamos a personas y empresas a proteger lo más importante:
+            su patrimonio, su familia y su futuro con soluciones personalizadas y asesoría cercana.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#contacto" class="btn primary">Solicitar cotización</a>
+            <a href="#servicios" class="btn secondary">Ver servicios</a>
+          </div>
+
+          <ul class="check-list">
+            <li><span class="check">✓</span> Coberturas adaptadas a tu realidad</li>
+            <li><span class="check">✓</span> Atención humana y personalizada</li>
+            <li><span class="check">✓</span> Soporte moderno y ágil</li>
+          </ul>
+
+          <div class="mini-stats">
+            <div class="mini-box">
+              <strong>+12k</strong>
+              <span>clientes atendidos</span>
+            </div>
+            <div class="mini-box">
+              <strong>98%</strong>
+              <span>satisfacción</span>
+            </div>
+            <div class="mini-box">
+              <strong>24/7</strong>
+              <span>asistencia</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="visual-card">
+            <div class="floating-card one">
+              <strong>+30%</strong>
+              <span>ahorro con cobertura inteligente</span>
+            </div>
+
+            <div class="visual-main">
+              <div class="floating-card two">
+                <strong>Protección total</strong>
+                <span>Plan familiar y empresarial</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="servicios">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">Nuestros servicios</span>
+          <h2>Soluciones que se adaptan a cada etapa de tu vida</h2>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="service-icon">🛡️</div>
+            <h3>Seguros de vida</h3>
+            <p>Protege a tus seres queridos con cobertura sólida y planes pensados para tu situación actual.</p>
+            <a href="#contacto">Más información →</a>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">🏠</div>
+            <h3>Seguro de hogar</h3>
+            <p>Cuidamos tu patrimonio con coberturas para daños, robos, accidentes y situaciones inesperadas.</p>
+            <a href="#contacto">Más información →</a>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">🚗</div>
+            <h3>Seguro automotriz</h3>
+            <p>Mantén tu movilidad segura con soluciones integrales para tu vehículo y para quienes viajan contigo.</p>
+            <a href="#contacto">Más información →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="stats-band">
+          <div class="stats-grid">
+            <div>
+              <strong>15+</strong>
+              <span>años de experiencia</span>
+            </div>
+            <div>
+              <strong>150K</strong>
+              <span>soluciones entregadas</span>
+            </div>
+            <div>
+              <strong>4.9/5</strong>
+              <span>valoración clientes</span>
+            </div>
+            <div>
+              <strong>300+</strong>
+              <span>aliados estratégicos</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="nosotros">
+      <div class="container about-grid">
+        <div class="about-image">
+          <div class="about-badge">
+            <strong>20K+</strong>
+            <span>familias protegidas</span>
+          </div>
+        </div>
+
+        <div class="about-copy">
+          <span class="eyebrow">Sobre nosotros</span>
+          <h2>Asesoría humana. Protección inteligente.</h2>
+          <p>
+            Somos un equipo especializado en brindar soluciones de seguros con una mirada clara,
+            moderna y orientada a las necesidades reales de cada cliente. Trabajamos con transparencia,
+            rapidez y cercanía para ayudarte a tomar decisiones informadas.
+          </p>
+
+          <ul>
+            <li><span class="check">✓</span> Evaluamos tu perfil y necesidades específicas.</li>
+            <li><span class="check">✓</span> Te recomendamos opciones con cobertura real y clara.</li>
+            <li><span class="check">✓</span> Te acompañamos antes, durante y después de la contratación.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="proceso">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">Cómo trabajamos</span>
+          <h2>Un proceso simple, seguro y cercano</h2>
+        </div>
+
+        <div class="steps-grid">
+          <article class="step-card">
+            <div class="step-number">01</div>
+            <h3>Consulta inicial</h3>
+            <p>Entendemos tus objetivos, riesgos y prioridades para definir la cobertura más adecuada.</p>
+          </article>
+
+          <article class="step-card">
+            <div class="step-number">02</div>
+            <h3>Diseño de solución</h3>
+            <p>Te presentamos opciones personalizadas con claridad, comparativas y recomendaciones reales.</p>
+          </article>
+
+          <article class="step-card">
+            <div class="step-number">03</div>
+            <h3>Implementación</h3>
+            <p>Gestionamos la contratación, la documentación y el acompañamiento para que todo sea sencillo.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">Beneficios</span>
+          <h2>Todo lo que necesitas para proteger tu futuro</h2>
+        </div>
+
+        <div class="features-grid">
+          <article class="feature-card">
+            <div class="icon">⚡</div>
+            <h3>Respuesta rápida</h3>
+            <p>Atención ágil para resolver tus dudas sin complicaciones.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="icon">📄</div>
+            <h3>Información clara</h3>
+            <p>Explicamos cada detalle para que tomes decisiones con confianza.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="icon">💬</div>
+            <h3>Asesoría personalizada</h3>
+            <p>Te guiamos con recomendaciones adaptadas a tu perfil y presupuesto.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="icon">🔒</div>
+            <h3>Confianza total</h3>
+            <p>Procesos seguros, transparentes y respaldados por una experiencia real.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="opiniones">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">Opiniones</span>
+          <h2>Lo que dicen nuestros clientes</h2>
+        </div>
+
+        <div class="review-grid">
+          <article class="review-card">
+            <div class="stars">★★★★★</div>
+            <p>“Muy buena atención, todo estuvo bien explicado y la cobertura fue exactamente lo que necesitábamos.”</p>
+            <div class="review-person">
+              <div class="avatar">A</div>
+              <div>
+                <strong>Ana M.</strong>
+                <span>Cliente familiar</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="review-card">
+            <div class="stars">★★★★★</div>
+            <p>“Un equipo muy profesional. Resolveron dudas rápidamente y nos ayudaron a elegir la mejor opción.”</p>
+            <div class="review-person">
+              <div class="avatar">J</div>
+              <div>
+                <strong>Javier P.</strong>
+                <span>Cliente automotriz</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="review-card">
+            <div class="stars">★★★★★</div>
+            <p>“Excelente servicio y trato cercano. La experiencia fue clara, ágil y confiable desde el primer contacto.”</p>
+            <div class="review-person">
+              <div class="avatar">L</div>
+              <div>
+                <strong>Lucía R.</strong>
+                <span>Cliente de hogar</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contacto">
+      <div class="container contact-grid">
+        <div class="contact-card contact-info">
+          <div>
+            <span class="eyebrow" style="color:#bde6dc;">Contáctanos</span>
+            <h3>Haz crecer tu tranquilidad</h3>
+          </div>
+
+          <div class="info-item">
+            <div class="icon">📍</div>
+            <div>
+              <strong>Dirección</strong><br>
+              Av. Principal 123, Lima, Perú
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="icon">📞</div>
+            <div>
+              <strong>Teléfono</strong><br>
+              +51 999 888 777
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="icon">✉️</div>
+            <div>
+              <strong>Correo</strong><br>
+              hola@entradasegura.com.pe
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <form class="contact-form" id="contactForm">
+            <div class="field">
+              <label for="name">Nombre</label>
+              <input type="text" id="name" placeholder="Tu nombre completo" required />
+            </div>
+
+            <div class="field">
+              <label for="email">Correo</label>
+              <input type="email" id="email" placeholder="tucorreo@mail.com" required />
+            </div>
+
+            <div class="field">
+              <label for="phone">Teléfono</label>
+              <input type="tel" id="phone" placeholder="+51 9XX XXX XXX" />
+            </div>
+
+            <div class="field">
+              <label for="message">Mensaje</label>
+              <textarea id="message" rows="5" placeholder="Cuéntanos qué necesitas..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn primary" style="width: fit-content;">Enviar mensaje</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div class="logo" style="color:#fff;">
+        <span class="logo-mark">E</span>
+        <span>Entrada Segura</span>
+      </div>
+
+      <div class="footer-links">
+        <a href="#inicio">Inicio</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+
+      <div>© <span id="year"></span> Entrada Segura</div>
+    </div>
+  </footer>
+
+  <script>
+    const navToggle = document.getElementById('navToggle');
+    const menu = document.getElementById('menu');
+
+    navToggle.addEventListener('click', () => {
+      menu.classList.toggle('open');
+    });
+
+    menu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => menu.classList.remove('open'));
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    document.getElementById('contactForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      alert('Gracias por escribirnos. Pronto te contactaremos.');
+      this.reset();
+    });
+  </script>
+</body>
+</html>
